@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 import traceback
 import requests
 import json
@@ -20,7 +23,7 @@ if (r.status_code == 200):
                 itemId = ele.get_attribute("itemid")
 
             print 'taobaoke : %s' % item['taobaoke_url']
-            title = driver.find_element_by_name('keywords').get_attribute('content')
+            title = driver.title.replace('-淘宝网', '').reaplce('-tmall.com天猫', '')
             url = 'http://we.40zhe.com/api/setArticleAttr?id=%s&taobao_id=%s&title=%s' % (item['id'], itemId, title);
             print 'crawl : %s' % url.encode('utf-8')
             rs = requests.get(url)
