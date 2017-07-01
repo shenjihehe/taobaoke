@@ -10,6 +10,7 @@ import json
 from selenium import webdriver
 
 while True:
+    print 'taobaoke run'
     r = requests.get('http://we.40zhe.com/api/getAllArticles')
     if (r.status_code != 200):
         time.sleep(5)
