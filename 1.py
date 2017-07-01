@@ -8,10 +8,10 @@ import requests
 import json
 from selenium import webdriver
 
-driver = webdriver.Chrome()
 
 r = requests.get('http://we.40zhe.com/api/getAllArticles', timeout = 9000)
 if (r.status_code == 200):
+    driver = webdriver.Chrome()
     obj = json.loads(r.text, encoding='utf-8')
     for item in obj:
         driver.get(item['taobaoke_url'])
