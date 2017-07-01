@@ -1,7 +1,36 @@
+# -*- coding: utf-8 -*-
+import traceback
 import requests
+import json
 from selenium import webdriver
 
 driver = webdriver.Chrome()
-driver.get("httpsss://i.click.taobao.com/t?e=m%3D2%26s%3DdQmBsP8rj9dw4vFB6t2Z2ueEDrYVVa646og1Ii54c8gYX8TY%2BNEwdxGhNfJpcvprLzKPa%2Ff2nu%2BONcmTXFDqVFUUeSyuzvzndwuIdUvuKnQgWIMF8jh8TT%2BYs7%2Fl%2BgH1ARvmImZc5Rf68BkhUpufuNREFoJ0Y68HrlXo0jK5P0Z1BxIwYavbk6Jn5AyUbPoV&pg1stepk=ucm:200272793029_174316785_%7B%22common_content_page%22:darenhome%7D")
-ele = driver.find_element_by_name("item_id")
-print ele.get_attribute("value")
+
+r = requests.get('http://we.40zhe.com/api/getAllArticles', timeout = 9000)
+if (r.status_code == 200):
+    obj = json.loads(r.text, encoding='utf-8')
+    for item in obj:
+        driver.get(item['taobaoke_url'])
+        try:
+            try:
+                ele = driver.find_element_by_name("item_id")
+                itemId = ele.get_attribute("value")
+            except:
+                ele = driver.find_element_by_id("LineZing")
+                itemId = ele.get_attribute("itemid")
+
+            print 'taobaoke : %s' % item['taobaoke_url']
+            title = driver.find_element_by_name('keywords').get_attribute('content')
+            url = 'http://we.40zhe.com/api/setArticleAttr?id=%s&taobao_id=%s&title=%s' % (item['id'], itemId, title);
+            print 'crawl : %s' % url.encode('utf-8')
+            rs = requests.get(url)
+            print rs.status_code
+        except Exception as e:
+            url = 'http://we.40zhe.com/api/deleteArticle?id=%s' % item['id'];
+            rs = requests.get(url)
+            print 'delete %s' % item['id']
+            print e
+            # print item['taobaoke_url']
+            # print driver.page_source
+
+driver.quit()
