@@ -41,7 +41,5 @@ for item in obj:
         rs = requests.get(url)
         print 'delete %s' % item['id']
         print e
-        # print item['taobaoke_url']
-        # print driver.page_source
 
 driver.quit()
