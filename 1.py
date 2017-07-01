@@ -23,11 +23,8 @@ if (r.status_code == 200):
                 itemId = ele.get_attribute("itemid")
 
             print 'taobaoke : %s' % item['taobaoke_url']
-            print '-----------'
             title = driver.title.replace('-淘宝网', '')
-            title.replace('-tmall.com天猫', '')
-            print title
-            print '-----------'
+            title = title.replace('-tmall.com天猫', '')
             url = 'http://we.40zhe.com/api/setArticleAttr?id=%s&taobao_id=%s&title=%s' % (item['id'], itemId, title);
             print 'crawl : %s' % url.encode('utf-8')
             rs = requests.get(url)
