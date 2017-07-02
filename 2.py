@@ -33,7 +33,7 @@ while True:
                 itemId = ele.get_attribute("itemid")
 
             print 'crawl taobaoId: %s' % itemId
-            url = 'http://we.40zhe.com/api/setITBKGoodsr?inventory_goods_id=%s&item_id=%s' % (item['inventory_goods_id'], itemId)
+            url = 'http://article.app/api/setITBKGoodsr?inventory_goods_id=%s&item_id=%s' % (item['inventory_goods_id'], itemId)
             print 'taobaoId crawl : %s' % url.encode('utf-8')
             rs = requests.get(url)
             print rs.status_code
