@@ -11,7 +11,7 @@ from selenium import webdriver
 
 while True:
     print 'invengory taobaoke run'
-    r = requests.get('http://article.app/api/getITBKGoods')
+    r = requests.get('http://we.40zhe.com/api/getITBKGoods')
     if (r.status_code != 200):
         time.sleep(5)
         continue
@@ -33,7 +33,7 @@ while True:
                 itemId = ele.get_attribute("itemid")
 
             print 'crawl taobaoId: %s' % itemId
-            url = 'http://article.app/api/setITBKGoods?inventory_goods_id=%s&item_id=%s' % (item['inventory_goods_id'], itemId)
+            url = 'http://we.40zhe.com/api/setITBKGoods?inventory_goods_id=%s&item_id=%s' % (item['inventory_goods_id'], itemId)
             print 'taobaoId crawl : %s' % url.encode('utf-8')
             rs = requests.get(url)
             print rs.status_code
