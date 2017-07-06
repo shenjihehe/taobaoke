@@ -38,7 +38,9 @@ while True:
             rs = requests.get(url)
             print rs.status_code
         except Exception as e:
-            print item['taobaoke_url']
-            print e
+            print 'delete goods'
+            url = 'http://we.40zhe.com/api/deleteITBKGoods?inventory_goods_id=%d' % (item['inventory_goods_id'])
+            print 'delete goods: %s' % url.encode('utf-8')
+            rs = requests.get(url)
 
     driver.quit()
