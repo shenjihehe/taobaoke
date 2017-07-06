@@ -29,9 +29,9 @@ while True:
             driver.set_window_size(480, 800)
             driver.get(item['url'])
             driver.find_element_by_tag_name('body').click()
-            for i in range(0, 2):
+            for i in range(0, 20):
                 driver.find_element_by_tag_name('body').send_keys(Keys.END)
-                time.sleep(3)
+                time.sleep(2)
 
             try:
                 for item in range(0, 120):
