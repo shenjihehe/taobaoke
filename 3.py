@@ -54,7 +54,7 @@ while True:
                         driver2.quit()
 
                         rs = requests.post(url='http://we.40zhe.com/api/writeGoods', data={
-                            'price': price,
+                            'price': float(price),
                             'des': des,
                             'taobaoke_url': taobaoke_url,
                             'img_src': image_src
