@@ -38,7 +38,7 @@ while True:
             rs = requests.get(url)
             print rs.status_code
         except Exception as e:
+            print item['taobaoke_url']
             print e
-            pass
 
     driver.quit()
