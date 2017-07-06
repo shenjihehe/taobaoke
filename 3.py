@@ -62,12 +62,17 @@ while True:
                         print rs.status_code
                         print rs.text
                     except Exception as e:
+                        print e
                         continue
             except Exception as e:
                 print e
+                continue
     except Exception as e:
         print e
+
+    print 'quit'
     driver.quit()
+    print 'sleep'
     time.sleep(300)
 
 
