@@ -37,12 +37,16 @@ while True:
                 for item in range(0, 120):
                     try:
                         price = driver.find_element_by_xpath('//*[@id="rx-block"]/div/div[%d]/div/div/a/div/div[2]/span' % item).text
-                        title = driver.find_element_by_xpath('//*[@id="rx-block"]/div/div[%d]/div/div/div/a/span[1]' % item).text
                         des = driver.find_element_by_xpath('//*[@id="rx-block"]/div/div[%d]/div/div/div/a/span[2]' % item).text
                         taobaoke_url = driver.find_element_by_xpath('//*[@id="rx-block"]/div/div[%d]/div/div/div/a' % item).get_attribute('href')
                         img_src = driver.find_element_by_xpath('//*[@id="rx-block"]/div/div[%d]/div/div/a/div/div[1]' % item)
 
                         image_src = img_src.value_of_css_property('background-image').replace('url("', '').replace('"', '').replace(')', '').replace('(', '')
+                        if image_src == 'https://gw.alicdn.com/tfs/TB1vexLQXXXXXXlXpXXXXXXXXXX-1-1.png':
+                            print '---------------'
+                            print '没有图片'
+                            print '---------------'
+                            continue
 
                         driver2 = webdriver.Chrome()
                         driver2.get(taobaoke_url)
@@ -51,7 +55,6 @@ while True:
 
                         rs = requests.post(url='http://we.40zhe.com/api/writeGoods', data={
                             'price': price,
-                            'title': title,
                             'des': des,
                             'taobaoke_url': taobaoke_url,
                             'img_src': image_src
