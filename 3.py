@@ -68,6 +68,7 @@ while True:
     except Exception as e:
         print e
     driver.quit()
+    time.sleep(300)
 
 
 
