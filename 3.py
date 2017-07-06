@@ -49,7 +49,7 @@ while True:
                         taobaoke_url = driver2.find_element_by_xpath('/html/body/div[1]/div[2]/div/div/div[2]/a').get_attribute('href')
                         driver2.quit()
 
-                        rs = requests.post(url='http://article.app/api/writeGoods', data={
+                        rs = requests.post(url='http://we.40zhe.com/api/writeGoods', data={
                             'price': price,
                             'title': title,
                             'des': des,
@@ -64,11 +64,11 @@ while True:
             except Exception as e:
                 print e
 
-            driver.quit()
 
     except Exception as e:
         print e
 
+    driver.quit()
     time.sleep(300)
 
 
