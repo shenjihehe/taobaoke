@@ -31,7 +31,7 @@ while True:
             driver.find_element_by_tag_name('body').click()
             for i in range(0, 2):
                 driver.find_element_by_tag_name('body').send_keys(Keys.END)
-                time.sleep(1)
+                time.sleep(3)
 
             try:
                 for item in range(0, 120):
@@ -63,11 +63,8 @@ while True:
                         continue
             except Exception as e:
                 print e
-
-
     except Exception as e:
         print e
-
     driver.quit()
     time.sleep(300)
 
