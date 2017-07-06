@@ -43,10 +43,16 @@ while True:
                         img_src = driver.find_element_by_xpath('//*[@id="rx-block"]/div/div[%d]/div/div/a/div/div[1]' % item)
 
                         image_src = img_src.value_of_css_property('background-image').replace('url("', '').replace('"', '').replace(')', '').replace('(', '')
-                        url = 'http://we.40zhe.com/api/writeGoods?title=%s&des=%s&img_src=%s&price=%s&taobaoke_url=%s' % (title, des, image_src, price, taobaoke_url)
-                        print 'simple goods crawl : %s' % url.encode('utf-8')
-                        rs = requests.get(url)
+                        rs = requests.get(url='http://we.40zhe.com/api/writeGoods', params={
+                            'price': price,
+                            'title': title,
+                            'des': des,
+                            'taobaoke_url': taobaoke_url,
+                            'img_src': img_src
+                        })
+                        print rs.url
                         print rs.status_code
+                        print rs.text
                     except Exception as e:
                         continue
             except Exception as e:
