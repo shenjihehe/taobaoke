@@ -48,7 +48,7 @@ while True:
                             'title': title,
                             'des': des,
                             'taobaoke_url': taobaoke_url,
-                            'img_src': img_src
+                            'img_src': image_src
                         })
                         print rs.url
                         print rs.status_code
