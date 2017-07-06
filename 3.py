@@ -29,9 +29,9 @@ while True:
             driver.set_window_size(480, 800)
             driver.get(item['url'])
             driver.find_element_by_tag_name('body').click()
-            for i in range(0, 15):
+            for i in range(0, 2):
                 driver.find_element_by_tag_name('body').send_keys(Keys.END)
-                time.sleep(2)
+                time.sleep(1)
 
             try:
                 for item in range(0, 120):
@@ -43,7 +43,13 @@ while True:
                         img_src = driver.find_element_by_xpath('//*[@id="rx-block"]/div/div[%d]/div/div/a/div/div[1]' % item)
 
                         image_src = img_src.value_of_css_property('background-image').replace('url("', '').replace('"', '').replace(')', '').replace('(', '')
-                        rs = requests.get(url='http://we.40zhe.com/api/writeGoods', params={
+
+                        driver2 = webdriver.Chrome()
+                        driver2.get(taobaoke_url)
+                        taobaoke_url = driver2.find_element_by_xpath('/html/body/div[1]/div[2]/div/div/div[2]/a').get_attribute('href')
+                        driver2.quit()
+
+                        rs = requests.post(url='http://article.app/api/writeGoods', data={
                             'price': price,
                             'title': title,
                             'des': des,
@@ -57,10 +63,12 @@ while True:
                         continue
             except Exception as e:
                 print e
+
+            driver.quit()
+
     except Exception as e:
         print e
 
-    driver.quit()
     time.sleep(300)
 
 
