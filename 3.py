@@ -51,6 +51,10 @@ while True:
                             driver2 = webdriver.Chrome()
                             driver2.get(taobaoke_url)
                             real_url = driver2.find_element_by_xpath('/html/body/div[1]/div[2]/div/div/div[2]/a').get_attribute('href')
+                            try:
+                                    image_src = driver2.find_element_by_xpath('//*[@id="scroll"]/div/div[1]/div/a/div[1]/div[1]/div/div/div[1]/div/img').get_attribute('src')
+                            except:
+                                    image_src = driver2.find_element_by_xpath('//*[@id="scroll"]/div/div[1]/div/a/div[1]/div/div/div/img').get_attribute('src')
                             image_src = driver2.find_element_by_xpath('//*[@id="scroll"]/div/div[1]/div/a/div[1]/div[1]/div/div/div[1]/div/img').get_attribute('src')
                             driver2.quit()
 
@@ -71,12 +75,18 @@ while True:
                         print '---------------'
                     except Exception as e:
                         print '-1-'
+                        print e
+                        print '-1-'
                         continue
             except Exception as e:
+                print '-2-'
+                print e
                 print '-2-'
                 continue
 
     except Exception as e:
+        print '-3-'
+        print e
         print '-3-'
 
     print 'quit'
