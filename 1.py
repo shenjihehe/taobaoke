@@ -24,6 +24,7 @@ while True:
     driver = webdriver.Chrome()
     for item in obj:
         driver.get(item['taobaoke_url'])
+
         try:
             try:
                 ele = driver.find_element_by_name("item_id")
@@ -44,5 +45,7 @@ while True:
             rs = requests.get(url)
             print 'delete %s' % item['id']
             print e
+            
+        driver.quit()
 
-    driver.quit()
+
