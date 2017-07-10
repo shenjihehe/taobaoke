@@ -30,15 +30,17 @@ while True:
             try:
                 ele = driver.find_element_by_name("item_id")
                 itemId = ele.get_attribute("value")
+                img = driver.find_element_by_id('J_ImgBooth').get_attribute("src")
             except:
                 ele = driver.find_element_by_id("LineZing")
                 itemId = ele.get_attribute("itemid")
+                img = driver.find_element_by_id('J_ImgBooth').get_attribute("src")
 
             print 'taobaoke : %s' % item['taobaoke_url']
             print 'taobaoId: %s' % itemId
             title = driver.title.replace('-淘宝网', '')
             title = title.replace('-tmall.com天猫', '')
-            url = 'http://we.40zhe.com/api/setITBKGoods?inventory_goods_id=%s&item_id=%s&title=%s' % (item['inventory_goods_id'], itemId, title)
+            url = 'http://we.40zhe.com/api/setITBKGoods?inventory_goods_id=%s&item_id=%s&title=%s&item_pic=%s' % (item['inventory_goods_id'], itemId, title, img)
             print 'taobaoId crawl : %s' % url.encode('utf-8')
             rs = requests.get(url)
             print rs.status_code
