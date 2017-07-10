@@ -45,7 +45,7 @@ while True:
             rs = requests.get(url)
             print rs.status_code
         except Exception as e:
-            url = 'http://we.40zhe.com/api/deleteArticle?id=%s' % item['id'];
+            url = 'http://we.40zhe.com/api/deleteArticle?id=%s' % (item['id'])
             rs = requests.get(url)
             print 'delete taobao_id %s' % item['taobao_id']
             print rs.status_code
