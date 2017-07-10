@@ -5,8 +5,9 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 import time
-import requests
 import json
+import random
+import requests
 from selenium import webdriver
 
 while True:
@@ -21,10 +22,11 @@ while True:
         time.sleep(5)
         continue
 
-    driver = webdriver.Chrome()
     for item in obj['data']:
+        driver = webdriver.Chrome()
+        driver.get(item['taobaoke_url'])
+
         try:
-            driver.get(item['taobaoke_url'])
             try:
                 ele = driver.find_element_by_name("item_id")
                 itemId = ele.get_attribute("value")
@@ -32,7 +34,7 @@ while True:
                 ele = driver.find_element_by_id("LineZing")
                 itemId = ele.get_attribute("itemid")
 
-            print 'crawl taobaoId: %s' % itemId
+            print 'taobaoId: %s' % itemId
             url = 'http://we.40zhe.com/api/setITBKGoods?inventory_goods_id=%s&item_id=%s' % (item['inventory_goods_id'], itemId)
             print 'taobaoId crawl : %s' % url.encode('utf-8')
             rs = requests.get(url)
@@ -43,4 +45,7 @@ while True:
             print 'delete goods: %s' % url.encode('utf-8')
             rs = requests.get(url)
 
-    driver.quit()
+        rand = random.randint(5, 8)
+        print 'sleep : %s' % rand
+        time.sleep(rand)
+        driver.quit()
