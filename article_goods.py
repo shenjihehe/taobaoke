@@ -48,6 +48,7 @@ while True:
             url = 'http://we.40zhe.com/api/deleteArticle?id=%s' % item['id'];
             rs = requests.get(url)
             print 'delete taobao_id %s' % item['taobao_id']
+            print rs.status_code
             print e
 
         rand = random.randint(5, 8)

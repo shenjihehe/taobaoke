@@ -49,6 +49,7 @@ while True:
             url = 'http://we.40zhe.com/api/deleteITBKGoods?inventory_goods_id=%d' % (item['inventory_goods_id'])
             print 'delete goods: %s' % url.encode('utf-8')
             rs = requests.get(url)
+            print rs.status_code
 
         rand = random.randint(5, 8)
         print 'sleep : %s' % rand
