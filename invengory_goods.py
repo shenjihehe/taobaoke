@@ -51,7 +51,7 @@ while True:
             rs = requests.get(url)
             print rs.status_code
 
-        rand = random.randint(5, 8)
-        print 'sleep : %s' % rand
-        time.sleep(rand)
+        # rand = random.randint(5, 8)
+        # print 'sleep : %s' % rand
+        # time.sleep(rand)
         driver.quit()
