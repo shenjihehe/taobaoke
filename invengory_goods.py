@@ -34,8 +34,11 @@ while True:
                 ele = driver.find_element_by_id("LineZing")
                 itemId = ele.get_attribute("itemid")
 
+            print 'taobaoke : %s' % item['taobaoke_url']
             print 'taobaoId: %s' % itemId
-            url = 'http://we.40zhe.com/api/setITBKGoods?inventory_goods_id=%s&item_id=%s' % (item['inventory_goods_id'], itemId)
+            title = driver.title.replace('-淘宝网', '')
+            title = title.replace('-tmall.com天猫', '')
+            url = 'http://we.40zhe.com/api/setITBKGoods?inventory_goods_id=%s&item_id=%s&title=%s' % (item['inventory_goods_id'], itemId, title)
             print 'taobaoId crawl : %s' % url.encode('utf-8')
             rs = requests.get(url)
             print rs.status_code
