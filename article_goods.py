@@ -12,7 +12,13 @@ from selenium import webdriver
 
 while True:
     print 'article taobaoke run'
-    r = requests.get('http://we.40zhe.com/api/getAllArticles')
+    try:
+        r = requests.get('http://we.40zhe.com/api/getAllArticles')
+    except Exception as e:
+        time.sleep(10)
+        print e
+        continue
+
     if (r.status_code != 200):
         time.sleep(5)
         continue

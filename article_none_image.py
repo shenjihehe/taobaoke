@@ -11,8 +11,14 @@ import requests
 from selenium import webdriver
 
 while True:
-    print 'article taobaoke run'
-    r = requests.get('http://we.40zhe.com/api/getAllArticlesNoneImage')
+    print 'article none image run'
+    try:
+        r = requests.get('http://we.40zhe.com/api/getAllArticlesNoneImage')
+    except Exception as e:
+        time.sleep(10)
+        print e
+        continue
+
     if (r.status_code != 200):
         time.sleep(5)
         continue
