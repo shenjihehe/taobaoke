@@ -11,7 +11,7 @@ import requests
 from selenium import webdriver
 
 while True:
-    print 'invengory taobaoke run'
+    print 'conver invengory taobaoke_url, crawl image id title.'
 
     try:
         r = requests.get('http://we.40zhe.com/api/getITBKGoods')
@@ -25,9 +25,10 @@ while True:
         continue
 
     obj = json.loads(r.text, encoding='utf-8')
-    if (len(obj) == 0):
+    if (len(obj['data']) == 0):
         time.sleep(5)
         continue
+
 
     for item in obj['data']:
         driver = webdriver.Chrome()

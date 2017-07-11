@@ -10,8 +10,10 @@ import random
 import requests
 from selenium import webdriver
 
+# 转换淘宝客链接、抓取:图片、ID、标题
 while True:
-    print 'article taobaoke run'
+    print 'conver article taobaoke_url, crawl image id title.'
+
     try:
         r = requests.get('http://we.40zhe.com/api/getAllArticles')
     except Exception as e:
@@ -56,9 +58,10 @@ while True:
             print 'delete taobao_id %s' % item['taobao_id']
             print rs.status_code
             print e
-            
+
         driver.quit()
 
     rand = random.randint(5, 8)
     print 'sleep : %s' % rand
     time.sleep(rand)
+
