@@ -57,7 +57,8 @@ while True:
             print rs.status_code
             print e
 
-        rand = random.randint(5, 8)
-        print 'sleep : %s' % rand
-        time.sleep(rand)
         driver.quit()
+
+    rand = random.randint(5, 8)
+    print 'sleep : %s' % rand
+    time.sleep(rand)
