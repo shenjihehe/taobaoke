@@ -7,14 +7,14 @@ sys.setdefaultencoding('utf-8')
 
 import time
 import json
+import random
 import requests
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 while True:
-    driver = webdriver.Chrome()
     try:
-        print 'simple goods'
+        print 'talent simple goods'
         r = requests.get('http://we.40zhe.com/api/getTkAuthors')
         if (r.status_code != 200):
             time.sleep(2)
@@ -25,12 +25,8 @@ while True:
             time.sleep(2)
             continue
 
-        print obj
         for item in obj:
-            print '--------------------next-----------------'
-            print '--------------------next-----------------'
-            print '--------------------next-----------------'
-            print '--------------------next-----------------'
+            driver = webdriver.Chrome()
             driver.set_window_size(480, 800)
             driver.get(item['url'])
             driver.find_element_by_tag_name('body').click()
@@ -92,14 +88,18 @@ while True:
                 print '-2-'
                 print e
                 print '-2-'
+                driver.quit()
                 continue
+
+            driver.quit()
+
 
     except Exception as e:
         print '-3-'
         print e
         print '-3-'
 
-    print 'quit'
-    driver.quit()
-    print 'sleep'
-    time.sleep(300)
+
+    rand = random.randint(10, 20)
+    print 'sleep : %s' % rand
+    time.sleep(rand)
