@@ -32,8 +32,11 @@ while True:
 
 
     for item in obj:
-        driver = webdriver.Chrome()
-        driver.get(item['taobaoke_url'])
+        try:
+            driver = webdriver.Chrome()
+            driver.get(item['taobaoke_url'])
+        except:
+            continue
 
         try:
             try:
