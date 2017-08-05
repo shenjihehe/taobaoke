@@ -65,6 +65,7 @@ while True:
             print 'crawl : %s' % url.encode('utf-8')
             rs = requests.get(url)
             print rs.status_code
+            driver.quit()
         except Exception as e:
             print 'Request Url Error'
             print 'Delete taobao id %s' % item['taobao_id']
