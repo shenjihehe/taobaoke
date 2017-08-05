@@ -38,10 +38,12 @@ while True:
                 ele = driver.find_element_by_name("item_id")
                 itemId = ele.get_attribute("value")
                 img = driver.find_element_by_id('J_ImgBooth').get_attribute("src")
+                price = driver.find_element_by_class_name('tb-rmb-num').extr
             except:
                 ele = driver.find_element_by_id("LineZing")
                 itemId = ele.get_attribute("itemid")
                 img = driver.find_element_by_id('J_ImgBooth').get_attribute("src")
+
 
             print 'taobaoke : %s' % item['taobaoke_url']
             title = driver.title.replace('-淘宝网', '')
