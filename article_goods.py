@@ -30,12 +30,17 @@ while True:
         time.sleep(5)
         continue
 
-
     for item in obj:
+        driver = webdriver.Chrome()
+
         try:
-            driver = webdriver.Chrome()
             driver.get(item['taobaoke_url'])
         except:
+            url = 'http://we.40zhe.com/api/deleteArticle?id=%s' % (item['id'])
+            rs = requests.get(url)
+            print 'delete taobao_id %s' % item['taobao_id']
+            print rs.status_code
+            driver.quit()
             continue
 
         try:
