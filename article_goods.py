@@ -76,7 +76,7 @@ while True:
             driver.quit()
 
 
-    rand = random.randint(5, 8)
+    rand = random.randint(1, 6)
     print 'sleep : %s' % rand
     time.sleep(rand)
     driver.quit()
