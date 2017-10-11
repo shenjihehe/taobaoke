@@ -25,10 +25,14 @@ while True:
         time.sleep(5)
         continue
 
-    item = json.loads(r.text, encoding='utf-8')
-    if (len(item) == 0):
-        time.sleep(5)
+    try:
+        item = json.loads(r.text, encoding='utf-8')
+        if (len(item) == 0):
+            time.sleep(5)
+            continue
+    except Exception as e:
         continue
+
 
     driver = webdriver.Chrome()
 
