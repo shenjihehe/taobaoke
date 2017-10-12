@@ -45,7 +45,7 @@ while True:
         url = 'http://we.40zhe.com/api/deleteArticle?id=%s' % (item['id'])
         rs = requests.get(url)
         print 'Request Url Error'
-        print 'Delete taobao id %s' % item['taobao_id']
+        print 'Delete taobaoke url %s' % item['taobaoke_url']
         print url
         driver.quit()
         continue
