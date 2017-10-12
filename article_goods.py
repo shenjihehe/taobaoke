@@ -21,7 +21,6 @@ while True:
         print e
         continue
 
-    print r.text
     if (r.status_code != 200):
         time.sleep(5)
         continue
