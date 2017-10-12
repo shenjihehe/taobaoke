@@ -74,7 +74,7 @@ while True:
         driver.quit()
     except Exception as e:
         print 'Request Url Error'
-        print 'Delete taobao id %s' % item['taobao_id']
+        print 'Delete taobao url %s' % item['taobaoke_url']
         print e
         url = 'http://we.40zhe.com/api/deleteArticle?id=%s' % (item['id'])
         rs = requests.get(url)
