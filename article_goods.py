@@ -26,11 +26,12 @@ while True:
         continue
 
     try:
-        item = json.loads(r.text, encoding='utf-8')
+        item = json.loads('asdf', encoding='utf-8')
         if (len(item) == 0):
             time.sleep(5)
             continue
     except Exception as e:
+        time.sleep(2)
         continue
 
 
