@@ -32,7 +32,7 @@ while True:
             driver.find_element_by_tag_name('body').click()
             for i in range(0, 40):
                 driver.find_element_by_tag_name('body').send_keys(Keys.END)
-                time.sleep(1)
+                # time.sleep(1)
 
             try:
                 for item in range(0, 120):
@@ -49,23 +49,29 @@ while True:
 
                         if taobaoke_url:
                             print 'taobaoke-url'
-                            driver2 = webdriver.Chrome()
+                            try:
+                                driver2 = webdriver.Chrome()
+                            except:
+                                continue
                             driver2.get(taobaoke_url)
                             try:
                                 real_url = driver2.find_element_by_xpath(
                                     '//*[@id="rx-block"]/div/div[2]/div/div/div[2]').get_attribute('data-spm-d')
                             except:
-                                pass
+                                driver2.quit()
+                                continue
+
                             driver2.quit()
 
+                        url = "http://detail.tmall.com/item.htm?id=%s" % real_url[1:]
                         print '---------------'
                         print des
                         print price[1:]
-                        print real_url[1:]
+                        print url
                         rs = requests.post(url='http://we.40zhe.com/api/writeGoods', data={
                             'price': price[1:],
                             'des': des,
-                            'taobaoke_url': real_url[1:],
+                            'taobaoke_url': url,
                             'img_src': ''
                         }, timeout=10)
                         print rs.url
