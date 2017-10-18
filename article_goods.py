@@ -36,7 +36,11 @@ while True:
 
 
 
-    driver = webdriver.Chrome()
+    try:
+        driver = webdriver.Chrome()
+    except:
+        print 'driver error'
+        continue
 
     try:
         driver.get(item['taobaoke_url'])
