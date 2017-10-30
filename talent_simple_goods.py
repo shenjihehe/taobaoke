@@ -87,6 +87,9 @@ while a == 1:
                         print rs.status_code
                         print rs.text
                         print '---------------'
+                        rand = random.randint(1, 10)
+                        time.sleep(rand)
+
                     except Exception as e:
                         print '-1-'
                         print e
