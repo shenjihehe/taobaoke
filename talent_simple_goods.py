@@ -73,15 +73,15 @@ while True:
                         print des
                         print price[1:]
                         print url
-                        # rs = requests.post(url='http://we.40zhe.com/api/writeGoods', data={
-                        #     'price': price[1:],
-                        #     'des': des,
-                        #     'taobaoke_url': url,
-                        #     'img_src': ''
-                        # }, timeout=10)
-                        # print rs.url
-                        # print rs.status_code
-                        # print rs.text
+                        rs = requests.post(url='http://we.40zhe.com/api/writeGoods', data={
+                            'price': price[1:],
+                            'des': des,
+                            'taobaoke_url': url,
+                            'img_src': ''
+                        }, timeout=10)
+                        print rs.url
+                        print rs.status_code
+                        print rs.text
                         print '---------------'
                     except Exception as e:
                         print '-1-'
