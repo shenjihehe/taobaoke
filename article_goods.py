@@ -34,8 +34,6 @@ while True:
         time.sleep(2)
         continue
 
-
-
     try:
         driver = webdriver.Chrome()
     except:
