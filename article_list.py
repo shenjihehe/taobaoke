@@ -15,19 +15,7 @@ from selenium.webdriver.common.keys import Keys
 try:
     print 'talent simple goods'
     r = requests.get('http://we.40zhe.com/api/getTkAuthors')
-    if (r.status_code != 200):
-        time.sleep(2)
-        continue
-    
-    try:
-        obj = json.loads(r.text, encoding='utf-8')
-    except:
-        time.sleep(2)
-        continue
-    
-    if (len(obj) == 0):
-        time.sleep(2)
-        continue
+    obj = json.loads(r.text, encoding='utf-8')
 
     for data in obj:
         driver = webdriver.Chrome()
@@ -69,7 +57,9 @@ try:
                             index+=1
 
                             print '-------------'
-                            print rs.url
+                            print taobao
+                            print price[1:]
+                            print divs[index + 1].text
                             print rs.status_code
                             print rs.text
                             print '---------------'
